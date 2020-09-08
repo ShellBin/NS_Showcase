@@ -36,13 +36,13 @@ export default {
 </script>
 
 <style scoped>
-span {
-
-}
+::-webkit-scrollbar { width: 0}
 .visitor-view {
+  overflow: -moz-scrollbars-none;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: auto;
 }
 .intro-card {
   display: flex;
