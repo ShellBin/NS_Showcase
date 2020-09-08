@@ -1,18 +1,19 @@
 <template>
-  <div id="app" :style="{backgroundImage:'url(' + backgroundURL + ')'}">
-    <div class="header" :style="{background: darkThemeColor}">
-      <div class="user"><span>{{user}}'s page</span></div>
-      <div class="title"><span>Nintendo Switch</span></div>
+  <div id="app" :style="{backgroundImage:'url(' + sharedState.backgroundURL + ')'}">
+    <div class="header" :style="{background: sharedState.darkThemeColor}">
+      <div class="user"><span>{{sharedState.userName}}'s page</span></div>
+      <div class="title" v-if="viewerRole === 'visitor'"><span>Nintendo Switch</span></div>
       <div class="zoom" :class="{ zoomOut: isZoom }" role="button" v-if="viewerRole === 'visitor'" @click="zoomPage"></div>
     </div>
     <div v-if="viewerRole === 'visitor'">
-      <div class="visitor-view-background" :style="{background: lightThemeColor}"></div>
+      <div class="visitor-view-background" :style="{background: sharedState.lightThemeColor}"></div>
       <div class="visitor-view" v-if="viewerRole === 'visitor'"><VisitorView></VisitorView></div>
     </div>
   </div>
 </template>
 
 <script>
+import {store} from './store/store.js'
 import VisitorView from './components/VisitorView.vue'
 
 export default {
@@ -20,13 +21,12 @@ export default {
   components: {VisitorView},
   data () {
     return {
+      sharedState: store.state,
       viewerRole: 'visitor',
-      user: 'ShellBin',
-      isZoom: false,
-      backgroundURL: '../static/bg.jpg',
-      darkThemeColor: 'rgba(0,77,64,1)',
-      lightThemeColor: 'rgba(0,77,64,0.65)'
+      isZoom: false
     }
+  },
+  mounted () {
   },
   methods: {
     zoomPage () {
@@ -48,6 +48,7 @@ body {
   height: 100%;
   background-size: cover;
   z-index: -10;
+  font-family: "Gill Sans", "Lucida Grande", Helvetica, sans-serif;
 }
 .header {
   display: flex;
@@ -60,7 +61,6 @@ body {
   position: absolute;
   z-index: 1010;
   text-align: center;
-  font-family: "Gill Sans", "Lucida Grande", Helvetica, sans-serif;
 }
 .user {
   margin-left: 2rem;
