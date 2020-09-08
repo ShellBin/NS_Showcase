@@ -1,9 +1,13 @@
 <template>
   <div id="app" :style="{backgroundImage:'url(' + sharedState.backgroundURL + ')'}">
     <div class="header" :style="{background: sharedState.darkThemeColor}">
-      <div class="user"><span>{{sharedState.userName}}'s page</span></div>
+      <div style="width: 33.3%; display: flex; justify-content: flex-start">
+        <div class="user"><span>{{sharedState.userName}}'s page</span></div>
+      </div>
       <div class="title" v-if="viewerRole === 'visitor'"><span>Nintendo Switch</span></div>
-      <div class="zoom" :class="{ zoomOut: isZoom }" role="button" v-if="viewerRole === 'visitor'" @click="zoomPage"></div>
+      <div style="width: 33.3%; display: flex; justify-content: flex-end">
+        <div class="zoom" :class="{ zoomOut: isZoom }" role="button" v-if="viewerRole === 'visitor'" @click="zoomPage"></div>
+      </div>
     </div>
     <div v-if="viewerRole === 'visitor'">
       <div class="visitor-view-background" :style="{background: sharedState.lightThemeColor}"></div>
@@ -64,9 +68,10 @@ body {
 }
 .user {
   margin-left: 2rem;
+  width: 33.3%;
 }
 .title {
-  font-size: 1.5rem;
+  font-size: 1.5rem;width: 33.3%;
 }
 .zoom {
   margin-right: 2rem;
@@ -92,6 +97,9 @@ body {
 @media (max-width: 65rem) {
   .visitor-view-background {
     width: 100%;
+  }
+  .header {
+    height: 3.5rem;
   }
 }
 </style>

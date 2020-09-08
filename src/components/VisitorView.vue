@@ -24,6 +24,9 @@ import {store} from '../store/store'
 export default {
   name: 'VisitorView',
   components: {Stage},
+  computed: {
+    // 目前持有游戏数量的计算
+  },
   data () {
     return {
       sharedState: store.state
@@ -59,8 +62,15 @@ span {
   flex-direction: column;
   justify-content: space-between;
   margin: 1.5rem 1rem 1rem;
-  width: 100%;
   font-size: 0.95rem;
+}
+@media (max-width: 36rem) {
+  .intro-card {
+    width: 16rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 </style>
