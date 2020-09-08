@@ -11,7 +11,17 @@ export let store = {
     friendCode: 'SW-1234-5678-90AB',
     registrationDate: '几分钟前',
     // 游戏信息 (json 对象)
-    gameList: []
+    gameList: [],
+    defaultGame: [{
+      'name': '请添加游戏',
+      'year': '游戏发售年份',
+      'rating': '游戏分级',
+      'duration': '游戏时长',
+      'desc': '游戏描述',
+      'inTheLibrary': true,
+      'coverURL': '',
+      'infoImgURL': ''
+    }]
   },
   setUserName (newValue) {
     this.state.userName = newValue

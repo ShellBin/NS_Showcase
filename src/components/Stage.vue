@@ -2,9 +2,9 @@
   <div class="stage">
     <li class="scene">
       <div class="game">
-        <div class="poster"></div>
+        <div class="poster" role="img"></div>
         <div class="info">
-          <header>
+          <header role="banner">
             <h1></h1>
             <span class="year"></span>
             <span class="rating"></span>
@@ -18,10 +18,16 @@
 </template>
 
 <script>
+import {store} from '../store/store'
+
 export default {
   name: 'Stage',
+  computed: {
+    // 没有游戏时使用默认值代替
+  },
   data () {
     return {
+      sharedState: store.state
     }
   }
 }
@@ -47,6 +53,7 @@ export default {
   height: 25rem;
   margin: 2rem;
   perspective: 1000px;
+  list-style-type:none;
 }
 .game {
   width: 16.3rem;
@@ -57,6 +64,12 @@ export default {
 }
 .game:hover {
   transform: rotateY(-78deg) translateZ(20px);
+}
+.poster {
+  background-image: url("../assets/default-cover.jpg");
+}
+header {
+  background-image: url("../assets/default-info-page.jpg");
 }
 /*************************************
 Transform and style the two planes
