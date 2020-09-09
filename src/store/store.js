@@ -23,23 +23,5 @@ export let store = {
       'infoImgURL': '',
       'inTheLibrary': false
     }]
-  },
-  setUserName (newValue) {
-    this.state.userName = newValue
-  },
-  setAvatarURL (newValue) {
-    this.state.avatarURL = newValue
-  },
-  setFriendCode (newValue) {
-    this.state.friendCode = newValue
-  },
-  setUserHomepage (newValue) {
-    this.state.userHomepage = newValue
-  },
-  setRegistrationDate (newValue) {
-    this.state.registrationDate = newValue
-  },
-  setGameList (newValue) {
-    this.state.gameList = newValue
   }
 }

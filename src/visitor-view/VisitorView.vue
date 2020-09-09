@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import Stage from './Stage.vue'
+import Stage from '../components/Stage.vue'
 import {store} from '../store/store'
 
 export default {

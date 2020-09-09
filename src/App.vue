@@ -1,39 +1,38 @@
 <template>
-  <div id="app" :style="{background:'url(' + sharedState.zoomInBackgroundURL + ')'}">
+  <div id="app" :style="{background:'url(' + sharedState.zoomInBackgroundURL+ ') center center no-repeat'}">
     <div class="header" :style="{background: sharedState.darkThemeColor}">
       <div style="width: 33.3%; display: flex; justify-content: flex-start">
         <div class="user" role="button"><a :href="sharedState.userHomepage">{{sharedState.userName}}'s page</a></div>
       </div>
-      <div class="title" v-if="viewerRole === 'visitor'"><span>Nintendo Switch</span></div>
+      <div class="title" v-if="nowView === '/'"><span>Nintendo Switch</span></div>
       <div style="width: 33.3%; display: flex; justify-content: flex-end">
         <div class="zoom"><span style="display:none;">弃用特性，commit: 28d4902</span></div>
       </div>
     </div>
-    <div v-if="viewerRole === 'visitor'">
+    <div>
       <div class="visitor-view-background" :style="{background: sharedState.lightThemeColor}"></div>
-      <div class="visitor-view" v-if="viewerRole === 'visitor'"><VisitorView></VisitorView></div>
+      <div class="visitor-view" v-if="nowView === '/'"><VisitorView></VisitorView></div>
+      <div class="admin-view" v-if="nowView === '/admin'"><AdminView></AdminView></div>
     </div>
   </div>
 </template>
 
 <script>
 import {store} from './store/store.js'
-import VisitorView from './components/VisitorView.vue'
+import VisitorView from './visitor-view/VisitorView.vue'
+import AdminView from './admin-view/AdminView.vue'
 
 export default {
   name: 'App',
-  components: {VisitorView},
+  components: {AdminView, VisitorView},
   data () {
     return {
       sharedState: store.state,
-      viewerRole: 'visitor'
+      nowView: '/'
     }
   },
-  computed: {
-  },
-  mounted () {
-  },
-  methods: {
+  created () {
+    this.nowView = this.$route.path
   }
 }
 </script>
