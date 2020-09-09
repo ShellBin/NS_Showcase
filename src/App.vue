@@ -1,12 +1,12 @@
 <template>
-  <div id="app" :style="{backgroundImage:'url(' + sharedState.backgroundURL + ')'}">
+  <div id="app" :style="{background:'url(' + sharedState.zoomInBackgroundURL + ')'}">
     <div class="header" :style="{background: sharedState.darkThemeColor}">
       <div style="width: 33.3%; display: flex; justify-content: flex-start">
         <div class="user" role="button"><a :href="sharedState.userHomepage">{{sharedState.userName}}'s page</a></div>
       </div>
       <div class="title" v-if="viewerRole === 'visitor'"><span>Nintendo Switch</span></div>
       <div style="width: 33.3%; display: flex; justify-content: flex-end">
-        <div class="zoom" :class="{ zoomOut: isZoom }" role="button" v-if="viewerRole === 'visitor'" @click="zoomPage"></div>
+        <div class="zoom"><span style="display:none;">弃用特性，commit: 28d4902</span></div>
       </div>
     </div>
     <div v-if="viewerRole === 'visitor'">
@@ -26,16 +26,14 @@ export default {
   data () {
     return {
       sharedState: store.state,
-      viewerRole: 'visitor',
-      isZoom: false
+      viewerRole: 'visitor'
     }
+  },
+  computed: {
   },
   mounted () {
   },
   methods: {
-    zoomPage () {
-      this.isZoom = !this.isZoom
-    }
   }
 }
 </script>
@@ -76,16 +74,6 @@ body {
 }
 .title {
   font-size: 1.5rem;width: 33.3%;
-}
-.zoom {
-  margin-right: 2rem;
-  width: 2.3rem;
-  height: 2.3rem;
-  background-image: url("./assets/in.svg");
-  background-size: cover;
-}
-.zoomOut {
-  background-image: url("./assets/open.svg");
 }
 .visitor-view-background, .visitor-view {
   height: 100%;

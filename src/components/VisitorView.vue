@@ -1,8 +1,7 @@
 <template>
   <div class="visitor-view">
-    <div class="main-view">
       <div class="intro-card" :style="{background: sharedState.cardColor}">
-        <div class="avatar" role="img" :style="{backgroundImage:'url(' + sharedState.avatarURL + ')'}"></div>
+        <div class="avatar" role="img" :style="{background:'url(' + sharedState.avatarURL + ') center center no-repeat'}"></div>
         <div class="text">
           <div class="intro">
             <span style="font-size: 1.5rem">{{sharedState.userName}}</span><br>
@@ -15,7 +14,6 @@
         </div>
       </div>
       <stage></stage>
-    </div>
     </div>
 </template>
 
@@ -53,12 +51,9 @@ export default {
 .visitor-view {
   overflow: -moz-scrollbars-none;
   overflow: auto;
-}
-.main-view {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 3rem;
 }
 .intro-card {
   display: flex;

@@ -1,10 +1,10 @@
 <template>
-  <div class="stage">
+  <div class="stage cssTransforms3d">
     <div class="scene" v-for="game in sharedState.gameList" :key="game.name">
       <div class="game">
-        <div class="poster" role="img" :style="{backgroundImage: game.coverURL !== '' ? 'url(' + game.coverURL + ')' : null}"></div>
+        <div class="poster" role="img" :style="{background: game.coverURL !== '' ? 'url(' + game.coverURL + ') center center no-repeat' : null}"></div>
         <div class="info">
-          <header role="banner" :style="{backgroundImage: game.infoImgURL !== '' ? 'url(' + game.infoImgURL + ')' : null}">
+          <header role="banner" :style="{background: game.infoImgURL !== '' ? 'url(' + game.infoImgURL + ') center center no-repeat' : null}">
             <h1>{{game.name}}</h1>
             <span class="year">{{game.year}}</span>
             <span class="rating">{{game.rating}}</span>
