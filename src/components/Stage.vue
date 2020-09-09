@@ -1,19 +1,19 @@
 <template>
   <div class="stage">
-    <li class="scene">
+    <div class="scene" v-for="game in sharedState.gameList" :key="game.name">
       <div class="game">
-        <div class="poster" role="img"></div>
+        <div class="poster" role="img" :style="{backgroundImage: game.coverURL !== '' ? 'url(' + game.coverURL + ')' : null}"></div>
         <div class="info">
-          <header role="banner">
-            <h1></h1>
-            <span class="year"></span>
-            <span class="rating"></span>
-            <span class="duration"></span>
+          <header role="banner" :style="{backgroundImage: game.infoImgURL !== '' ? 'url(' + game.infoImgURL + ')' : null}">
+            <h1>{{game.name}}</h1>
+            <span class="year">{{game.year}}</span>
+            <span class="rating">{{game.rating}}</span>
+            <span class="duration">{{game.duration}}</span>
           </header>
-          <p></p>
+          <p>{{game.desc}}</p>
         </div>
       </div>
-    </li>
+    </div>
   </div>
 </template>
 
@@ -22,13 +22,19 @@ import {store} from '../store/store'
 
 export default {
   name: 'Stage',
-  computed: {
-    // 没有游戏时使用默认值代替
-  },
   data () {
     return {
       sharedState: store.state
     }
+  },
+  mounted () {
+    if (Object.keys(this.sharedState.gameList).length === 0) {
+      this.sharedState.gameList = this.sharedState.defaultGame // 显示默认信息
+    }
+  },
+  computed: {
+  },
+  methods: {
   }
 }
 </script>

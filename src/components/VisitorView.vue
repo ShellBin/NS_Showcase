@@ -1,20 +1,22 @@
 <template>
   <div class="visitor-view">
-    <div class="intro-card" :style="{background: sharedState.cardColor}">
-      <div class="avatar" role="img" :style="{backgroundImage:'url(' + sharedState.avatarURL + ')'}"></div>
-      <div class="text">
-        <div class="intro">
-          <span style="font-size: 1.5rem">{{sharedState.userName}}</span><br>
-          <span style="margin-bottom: 1rem; display: inline-block; line-height: 2rem; font-size: 0.9rem">Friend Code: {{sharedState.friendCode}}</span><br>
-          <span>总记录游戏数: {{sharedState.gameList.length}}</span><br>
-          <span>目前持有: </span><br>
-          <span>加入时间：{{sharedState.registrationDate}}</span>
+    <div class="main-view">
+      <div class="intro-card" :style="{background: sharedState.cardColor}">
+        <div class="avatar" role="img" :style="{backgroundImage:'url(' + sharedState.avatarURL + ')'}"></div>
+        <div class="text">
+          <div class="intro">
+            <span style="font-size: 1.5rem">{{sharedState.userName}}</span><br>
+            <span style="margin-bottom: 1rem; display: inline-block; line-height: 2rem; font-size: 0.9rem">Friend Code: {{sharedState.friendCode}}</span><br>
+            <span>总记录游戏数: {{Object.keys(this.sharedState.gameList).length}}</span><br>
+            <span>目前持有: {{displayInTheLibrary}}</span><br>
+            <span>加入时间：{{sharedState.registrationDate}}</span>
+          </div>
+          <div role="button" style="border-top: 1px solid rgba(160,160,160,0.2); padding: 1rem 0 0.4rem"><a :href="sharedState.userHomepage">访问主页</a></div>
         </div>
-        <div role="button" style="border-top: 1px solid rgba(160,160,160,0.2); padding: 1rem 0 0.4rem"><span>访问主页</span></div>
       </div>
+      <stage></stage>
     </div>
-    <stage></stage>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -24,12 +26,23 @@ import {store} from '../store/store'
 export default {
   name: 'VisitorView',
   components: {Stage},
-  computed: {
-    // 目前持有游戏数量的计算
-  },
   data () {
     return {
-      sharedState: store.state
+      sharedState: store.state,
+      displayInTheLibrary: 0
+    }
+  },
+  computed: {
+  },
+  mounted () {
+    this.inTheLibraryCount()
+  },
+  methods: {
+    inTheLibraryCount () {
+      let gameCount = Object.keys(this.sharedState.gameList).length
+      for (let i = 0; i < gameCount; i++) {
+        if (this.sharedState.gameList[i].inTheLibrary) this.displayInTheLibrary++
+      }
     }
   }
 }
@@ -39,10 +52,13 @@ export default {
 ::-webkit-scrollbar { width: 0}
 .visitor-view {
   overflow: -moz-scrollbars-none;
+  overflow: auto;
+}
+.main-view {
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
+  margin-bottom: 3rem;
 }
 .intro-card {
   display: flex;

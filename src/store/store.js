@@ -10,6 +10,7 @@ export let store = {
     avatarURL: '../static/avatar.jpg',
     friendCode: 'SW-1234-5678-90AB',
     registrationDate: '几分钟前',
+    userHomepage: 'https:shellbin.me',
     // 游戏信息 (json 对象)
     gameList: [],
     defaultGame: [{
@@ -17,10 +18,10 @@ export let store = {
       'year': '游戏发售年份',
       'rating': '游戏分级',
       'duration': '游戏时长',
-      'desc': '游戏描述',
-      'inTheLibrary': true,
+      'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': '',
-      'infoImgURL': ''
+      'infoImgURL': '',
+      'inTheLibrary': false
     }]
   },
   setUserName (newValue) {

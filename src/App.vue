@@ -2,7 +2,7 @@
   <div id="app" :style="{backgroundImage:'url(' + sharedState.backgroundURL + ')'}">
     <div class="header" :style="{background: sharedState.darkThemeColor}">
       <div style="width: 33.3%; display: flex; justify-content: flex-start">
-        <div class="user"><span>{{sharedState.userName}}'s page</span></div>
+        <div class="user" role="button"><a :href="sharedState.userHomepage">{{sharedState.userName}}'s page</a></div>
       </div>
       <div class="title" v-if="viewerRole === 'visitor'"><span>Nintendo Switch</span></div>
       <div style="width: 33.3%; display: flex; justify-content: flex-end">
@@ -41,6 +41,10 @@ export default {
 </script>
 
 <style>
+a {
+  text-decoration:none;
+  color:inherit;
+}
 body {
   margin: 0;
 }
