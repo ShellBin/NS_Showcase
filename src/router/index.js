@@ -8,7 +8,12 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      path: '/',
+      name: 'index'
+    },
+    {
       path: '/admin',
+      name: 'admin',
       component: AdminView
     }
   ]

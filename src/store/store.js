@@ -4,7 +4,6 @@ export let store = {
     darkThemeColor: 'rgba(0,77,64,1)',
     lightThemeColor: 'rgba(0,77,64,0.65)',
     cardColor: 'rgb(0,137,123)',
-    zoomInBackgroundURL: '../static/bg-zoom-in.jpg',
     // 用户信息设置
     userName: 'Someone cute',
     avatarURL: '../static/avatar.jpg',

@@ -1,18 +1,18 @@
 <template>
-  <div id="app" :style="{background:'url(' + sharedState.zoomInBackgroundURL+ ') center center no-repeat'}">
+  <div id="app">
     <div class="header" :style="{background: sharedState.darkThemeColor}">
       <div style="width: 33.3%; display: flex; justify-content: flex-start">
         <div class="user" role="button"><a :href="sharedState.userHomepage">{{sharedState.userName}}'s page</a></div>
       </div>
-      <div class="title" v-if="nowView === '/'"><span>Nintendo Switch</span></div>
+      <div class="title" v-if="!isAdmin"><span>Nintendo Switch</span></div>
       <div style="width: 33.3%; display: flex; justify-content: flex-end">
         <div class="zoom"><span style="display:none;">弃用特性，commit: 28d4902</span></div>
       </div>
     </div>
     <div>
       <div class="visitor-view-background" :style="{background: sharedState.lightThemeColor}"></div>
-      <div class="visitor-view" v-if="nowView === '/'"><VisitorView></VisitorView></div>
-      <div class="admin-view" v-if="nowView === '/admin'"><AdminView></AdminView></div>
+      <div class="visitor-view" v-if="!isAdmin"><VisitorView></VisitorView></div>
+      <div class="admin-view" v-if="isAdmin"><AdminView></AdminView></div>
     </div>
   </div>
 </template>
@@ -28,11 +28,13 @@ export default {
   data () {
     return {
       sharedState: store.state,
-      nowView: '/'
+      isAdmin: false
     }
   },
   created () {
-    this.nowView = this.$route.path
+    this.isAdmin = this.$route.name === 'admin'
+  },
+  methods: {
   }
 }
 </script>
@@ -54,6 +56,7 @@ body {
   background-size: cover;
   z-index: -10;
   font-family: "Gill Sans", "Lucida Grande", Helvetica, sans-serif;
+  background: url("./assets/bg-zoom-in.jpg") center center no-repeat;
 }
 .header {
   display: flex;
@@ -74,7 +77,7 @@ body {
 .title {
   font-size: 1.5rem;width: 33.3%;
 }
-.visitor-view-background, .visitor-view {
+.visitor-view-background, .visitor-view, .admin-view{
   height: 100%;
   margin: auto;
   left: 0;
