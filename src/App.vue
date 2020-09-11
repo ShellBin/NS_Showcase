@@ -56,7 +56,8 @@ body {
   background-size: cover;
   z-index: -10;
   font-family: "Gill Sans", "Lucida Grande", Helvetica, sans-serif;
-  background: url("./assets/bg-zoom-in.jpg") center center no-repeat;
+  background: url("./assets/bg-zoom-in.jpg") center no-repeat;
+  background-size: cover;
 }
 .header {
   display: flex;
