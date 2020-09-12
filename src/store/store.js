@@ -20,7 +20,8 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': '',
       'infoImgURL': '',
-      'inTheLibrary': false
+      'inTheLibrary': false,
+      'isDigital': false
     }]
   }
 }
