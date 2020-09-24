@@ -6,7 +6,7 @@
           <div class="intro">
             <span style="font-size: 1.5rem">{{sharedState.userName}}</span><br>
             <span style="margin-bottom: 1rem; display: inline-block; line-height: 2rem; font-size: 0.9rem">Friend Code: {{sharedState.friendCode}}</span><br>
-            <span>总记录游戏数: {{Object.keys(this.sharedState.gameList).length}}</span><br>
+            <span>总记录游戏数: {{displayGameCount}}</span><br>
             <span>目前持有: {{displayInTheLibrary}}</span><br>
             <span>加入时间：{{sharedState.registrationDate}}</span>
           </div>
@@ -31,6 +31,13 @@ export default {
     }
   },
   computed: {
+    displayGameCount: function () {
+      if (this.sharedState.gameList === this.sharedState.defaultGame) {
+        return '0'
+      } else {
+        return Object.keys(this.sharedState.gameList).length
+      }
+    }
   },
   mounted () {
     this.inTheLibraryCount()

@@ -3,6 +3,7 @@
     <div class="admin-login"><AdminLogin></AdminLogin></div>
     <div class="main-container">
       <h2>个人信息编辑：</h2>
+      <div class="homepage-editor">首页：<input v-model="sharedState.userHomepage" placeholder="edit me" style="line-height: 1.2rem; font-size: 0.9rem"></div>
       <div class="intro-card-setting" :style="{background: sharedState.cardColor}">
         <div class="edit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13.89 3.39l2.71 2.72c.46.46.42 1.24.03 1.64l-8.01 8.02-5.56 1.16 1.16-5.58s7.6-7.63 7.99-8.03c.39-.39 1.22-.39 1.68.07zm-2.73 2.79l-5.59 5.61 1.11 1.11 5.54-5.65zm-2.97 8.23l5.58-5.6-1.07-1.08-5.59 5.6z"></path></svg></div>
         <div class="avatar" role="button" :style="{background:'url(' + sharedState.avatarURL + ') center center no-repeat'}"></div>
@@ -12,9 +13,30 @@
             <div>Friend Code: <input v-model="sharedState.friendCode" placeholder="edit me" style="margin-bottom: 1rem; line-height: 1.2rem; font-size: 0.9rem"></div>
             <div>加入时间：<input v-model="sharedState.registrationDate" placeholder="edit me" style="line-height: 1.2rem; font-size: 0.9rem"></div>
             <div style="display: flex">
-              <div class="card-save-button" role="button"><span>保存</span></div>
+              <div class="card-save-button" role="button" @click="updateData"><span>保存</span></div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="game-list-management">
+        <h2>游戏管理：</h2>
+        <div class="game-list-editor">
+          <div class="game-list-cell" v-for="(game,index) in sharedState.gameList" :key="index">
+            <div class="game-list-title" :class="game.name"><span>{{game.name}}</span><span @click="game.collapsed = !game.collapsed">{{game.collapsed ? '展开' : '收起'}}</span></div>
+            <div class="game-list-info" :style="{height: game.collapsed ? '0' : ''}">
+              <input v-model="game.name" placeholder="游戏名称">
+              <input v-model="game.year" placeholder="游戏发售年份">
+              <input v-model="game.rating" placeholder="游戏分级">
+              <input v-model="game.duration" placeholder="游戏时长">
+              <input v-model="game.desc" placeholder="使用一段文字来介绍一下这个游戏吧">
+              <input v-model="game.isDigital" placeholder="数字版？">
+              <input v-model="game.inTheLibrary" placeholder="还在手？">
+              <input v-model="game.coverURL" placeholder="封面url">
+              <input v-model="game.infoImgURL" placeholder="内页url">
+              <div class="delete-item" role="button" @click="sharedState.gameList.splice(index,1)">删除</div>
+            </div>
+          </div>
+          <div @click="addNewGame">添加</div>
         </div>
       </div>
     </div>
@@ -34,6 +56,25 @@ export default {
   data () {
     return {
       sharedState: store.state
+    }
+  },
+  methods: {
+    updateData () {
+      console.log('提交 store 中数据')
+    },
+    addNewGame () {
+      this.sharedState.gameList.push({
+        collapsed: false,
+        'name': '新游戏',
+        'year': '游戏发售年份',
+        'rating': '游戏分级',
+        'duration': '游戏时长',
+        'desc': '',
+        'coverURL': '',
+        'infoImgURL': '',
+        'inTheLibrary': false,
+        'isDigital': false
+      })
     }
   }
 }
@@ -56,6 +97,9 @@ h2 {
   color: white;
   margin: 5rem 0 0 0;
 }
+input::placeholder {
+  color: #BBBBBB;
+}
 ::-webkit-scrollbar { width: 0}
 .admin-view {
   overflow: -moz-scrollbars-none;
@@ -63,6 +107,10 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.main-container {
+  display: flex;
+  flex-direction: column;
 }
 .intro-card-setting {
   display: flex;
@@ -72,6 +120,36 @@ h2 {
   color: white;
   box-shadow: 0 0.2rem 0.2rem 0 rgba(0,0,0,0.14), 0 0.1rem 0.5rem 0 rgba(0,0,0,0.12), 0 0.3rem 0.1rem -0.2rem rgba(0,0,0,0.2);
   position: relative;
+}
+.homepage-editor {
+  width: 36rem;
+  margin-top: 2rem;
+  color: white;
+  font-size: 1.3rem;
+}
+.homepage-editor input {
+  width: 99%;
+}
+.game-list-editor {
+  margin-top: 2rem;
+}
+.game-list-cell {
+  color: white;
+  background-color: rgba(255,255,255,0.3);
+  padding: 0.5rem;
+  margin-bottom: 0.2rem;
+  border-radius: 0.5rem;
+  width: 99%;
+}
+.game-list-title {
+  display: flex;
+  justify-content: space-between;
+  transition-duration: 0.2s
+}
+div.game-list-info {
+  height: 18rem;
+  overflow: hidden;
+  transition: height ease 0.2s;
 }
 .avatar {
   min-width: 16rem;
@@ -123,6 +201,9 @@ h2 {
     height: 32rem;
     display: flex;
     flex-direction: column;
+  }
+  .homepage-editor {
+    width: 16rem;
   }
 }
 </style>
