@@ -20,11 +20,10 @@
 <script>
 import {store} from './store/store.js'
 import VisitorView from './visitor-view/VisitorView.vue'
-import AdminView from './admin-view/AdminView.vue'
 
 export default {
   name: 'App',
-  components: {AdminView, VisitorView},
+  components: {VisitorView},
   data () {
     return {
       sharedState: store.state,
@@ -72,7 +71,7 @@ body {
   text-align: center;
 }
 .user {
-  margin-left: 2rem;
+  margin-left: 1rem;
   width: 33.3%;
 }
 .title {
