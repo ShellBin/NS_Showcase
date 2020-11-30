@@ -20,8 +20,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster01.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still01.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     },
     {
       collapsed: true,
