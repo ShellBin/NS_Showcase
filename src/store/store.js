@@ -11,8 +11,8 @@ export let store = {
     registrationDate: '几分钟前',
     userHomepage: 'https://shellbin.me',
     // 游戏信息 (json 对象)
-    // 手动添加即可完成游戏添加
     gameList: [{
+      collapsed: true,
       'name': '请添加游戏1',
       'year': '游戏发售年份',
       'rating': '游戏分级',
@@ -24,13 +24,74 @@ export let store = {
       'isDigital': false
     },
     {
-      'name': '请添加游戏1',
+      collapsed: true,
+      'name': '请添加游戏2',
       'year': '游戏发售年份',
       'rating': '游戏分级',
       'duration': '游戏时长',
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
-      'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster01.jpg',
-      'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still01.jpg',
+      'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster02.jpg',
+      'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still02.jpg',
+      'inTheLibrary': false,
+      'isDigital': false
+    },
+    {
+      collapsed: true,
+      'name': '请添加游戏3',
+      'year': '游戏发售年份',
+      'rating': '游戏分级',
+      'duration': '游戏时长',
+      'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
+      'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster03.jpg',
+      'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still03.jpg',
+      'inTheLibrary': false,
+      'isDigital': false
+    },
+    {
+      collapsed: true,
+      'name': '请添加游戏4',
+      'year': '游戏发售年份',
+      'rating': '游戏分级',
+      'duration': '游戏时长',
+      'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
+      'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster04.jpg',
+      'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still04.jpg',
+      'inTheLibrary': false,
+      'isDigital': false
+    },
+    {
+      collapsed: true,
+      'name': '请添加游戏5',
+      'year': '游戏发售年份',
+      'rating': '游戏分级',
+      'duration': '游戏时长',
+      'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
+      'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster05.jpg',
+      'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still05.jpg',
+      'inTheLibrary': false,
+      'isDigital': false
+    },
+    {
+      collapsed: true,
+      'name': '请添加游戏6',
+      'year': '游戏发售年份',
+      'rating': '游戏分级',
+      'duration': '游戏时长',
+      'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
+      'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster06.jpg',
+      'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still06.jpg',
+      'inTheLibrary': false,
+      'isDigital': false
+    },
+    {
+      collapsed: true,
+      'name': '请添加游戏7',
+      'year': '游戏发售年份',
+      'rating': '游戏分级',
+      'duration': '游戏时长',
+      'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
+      'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster07.jpg',
+      'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still07.jpg',
       'inTheLibrary': false,
       'isDigital': false
     }],
