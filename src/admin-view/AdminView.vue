@@ -3,7 +3,7 @@
     <div class="admin-login"><AdminLogin></AdminLogin></div>
     <div class="main-container">
       <h2>个人信息编辑：</h2>
-      <div class="homepage-editor">首页：<input v-model="sharedState.userHomepage" placeholder="edit me" style="line-height: 1.2rem; font-size: 0.9rem; width: 100%; margin-top: 6px"></div>
+      <div class="homepage-editor">首页：<input v-model="sharedState.userHomepage" placeholder="edit me" style="line-height: 1.2rem; font-size: 0.9rem; width: 99%; margin-top: 6px"></div>
       <div class="intro-card-setting" :style="{background: sharedState.cardColor}">
         <div class="edit-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M13.89 3.39l2.71 2.72c.46.46.42 1.24.03 1.64l-8.01 8.02-5.56 1.16 1.16-5.58s7.6-7.63 7.99-8.03c.39-.39 1.22-.39 1.68.07zm-2.73 2.79l-5.59 5.61 1.11 1.11 5.54-5.65zm-2.97 8.23l5.58-5.6-1.07-1.08-5.59 5.6z"></path></svg></div>
         <div class="avatar" role="button" :style="{background:'url(' + sharedState.avatarURL + ') center center no-repeat'}"></div>
@@ -22,21 +22,22 @@
         <h2>游戏管理：</h2>
         <div class="game-list-editor">
           <div class="game-list-cell" v-for="(game,index) in sharedState.gameList" :key="index">
-            <div class="game-list-title" :class="game.name"><span>{{game.name}}</span><span @click="game.collapsed = !game.collapsed">{{game.collapsed ? '展开' : '收起'}}</span></div>
+            <div class="game-list-title" :class="game.name"><span style="font-size: 1.3rem">{{game.name}}</span><span @click="game.collapsed = !game.collapsed">{{game.collapsed ? '展开' : '收起'}}</span></div>
             <div class="game-list-info" :style="{height: game.collapsed ? '0' : ''}">
               <input v-model="game.name" placeholder="游戏名称">
               <input v-model="game.year" placeholder="游戏发售年份">
               <input v-model="game.rating" placeholder="游戏分级">
               <input v-model="game.duration" placeholder="游戏时长">
               <input v-model="game.desc" placeholder="使用一段文字来介绍一下这个游戏吧">
-              <span style="text-align:center">游戏还在手吗？</span>
-              <input type="checkbox" v-model="game.inTheLibrary">
               <input v-model="game.coverURL" placeholder="封面url">
               <input v-model="game.infoImgURL" placeholder="内页url">
-              <div class="delete-item" role="button" @click="sharedState.gameList.splice(index,1)">删除</div>
+              <label for="inTleLibrary">游戏还在手吗？</label>
+              <input id="inTleLibrary" type="checkbox" v-model="game.inTheLibrary">
+              <div class="delete-item" style="font-weight: bolder" role="button" @click="sharedState.gameList.splice(index,1)">删除(将无法恢复)</div>
             </div>
           </div>
-          <div @click="addNewGame">添加</div>
+          <div class="add-new-game" role="button" @click="addNewGame"></div>
+          <div class="list-save-button" role="button" @click="updateData"></div>
         </div>
       </div>
     </div>
@@ -60,7 +61,7 @@ export default {
   },
   methods: {
     updateData () {
-      console.log('提交 store 中数据')
+      console.log('排除无用数据后提交 store 中数据')
     },
     addNewGame () {
       this.sharedState.gameList.push({
@@ -151,6 +152,22 @@ div.game-list-info {
 div.game-list-info input {
   margin: 12px 1rem;
   width: 91%;
+}
+.add-new-game {
+  background-image: url("../assets/add.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 2rem;
+  width: 2rem;
+  margin: 1rem auto;
+}
+.list-save-button {
+  background-image: url("../assets/save.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 3rem;
+  width: 3rem;
+  margin: 3rem auto 0;
 }
 .avatar {
   min-width: 16rem;

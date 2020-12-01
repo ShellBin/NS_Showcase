@@ -33,8 +33,13 @@ export default {
   },
   created () {
     this.isAdmin = this.$route.name === 'admin'
+    this.fetchData()
   },
   methods: {
+    fetchData () {
+      console.log('获取数据')
+      // todo ajax 获取所需显示的数据
+    }
   }
 }
 </script>

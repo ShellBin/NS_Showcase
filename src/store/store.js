@@ -31,8 +31,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster02.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still02.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     },
     {
       collapsed: true,
@@ -43,8 +42,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster03.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still03.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     },
     {
       collapsed: true,
@@ -55,8 +53,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster04.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still04.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     },
     {
       collapsed: true,
@@ -67,8 +64,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster05.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still05.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     },
     {
       collapsed: true,
@@ -79,8 +75,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster06.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still06.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     },
     {
       collapsed: true,
@@ -91,8 +86,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster07.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still07.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     }],
     defaultGame: [{
       'name': '请添加游戏',
@@ -102,8 +96,7 @@ export let store = {
       'desc': '游戏描述，这里可以使用一段格式化的长文本来介绍游戏',
       'coverURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/poster08.jpg',
       'infoImgURL': 'http://tonoko-moe-static.smartgslb.com/switch/img/still08.jpg',
-      'inTheLibrary': false,
-      'isDigital': false
+      'inTheLibrary': false
     }]
   }
 }
